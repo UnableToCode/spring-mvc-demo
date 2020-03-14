@@ -43,7 +43,7 @@ public interface StudentRepository extends Repository<Student, Integer> {
 	 * @return a Collection of matching {@link Student}s (or an empty Collection if none
 	 * found)
 	 */
-	@Query("SELECT DISTINCT student FROM Studnet WHERE student.lastName LIKE :lastName%")
+	@Query("SELECT DISTINCT student FROM Student student WHERE student.lastName LIKE :lastName%")
 	@Transactional(readOnly = true)
 	Collection<Student> findByLastName(@Param("lastName") String lastName);
 
@@ -52,7 +52,7 @@ public interface StudentRepository extends Repository<Student, Integer> {
 	 * @param id the id to search for
 	 * @return the {@link Student} if found
 	 */
-	@Query("SELECT student FROM Student WHERE student.id =:id")
+	@Query("SELECT student FROM Student student WHERE student.studentId =:id")
 	@Transactional(readOnly = true)
 	Student findById(@Param("id") Integer id);
 

@@ -9,10 +9,10 @@ DROP TABLE students IF EXISTS;
 
 CREATE TABLE students (
   id         INTEGER IDENTITY PRIMARY KEY,
-  student_id INTEGER NOT NULL UNIQUE,
+  student_id VARCHAR(10) NOT NULL UNIQUE,
   first_name VARCHAR(30) NOT NULL,
   last_name  VARCHAR(30) NOT NULL,
-  sex        VARCHAR(5) NOT NULL,
+  sex        VARCHAR(10) NOT NULL,
   birth_date DATE NOT NULL,
   address    VARCHAR(255) NOT NULL,
   department VARCHAR(30) NOT NULL,

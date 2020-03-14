@@ -56,6 +56,6 @@ INSERT INTO students VALUES  (1, 171860600, 'George', 'Franklin', 'male', '1999-
 INSERT INTO students VALUES  (2, 171660501, 'Jeff', 'Black', 'female', '2000-02-03', '2387 S. Fair Way', 'Math');
 INSERT INTO students VALUES  (3, 171860602, 'Jean', 'Coleman', 'female', '1998-05-02', '105 N. Lake St.', 'EE');
 INSERT INTO students VALUES  (4, 171860603, 'Harold', 'Davis', 'male', '1999-10-02', '1450 Oak Blvd.', 'SE');
-INSERT INTO students VALUES  (5, 171860604, 'David', 'Schroeder', 'male', '1999-01-02', '345 Maple St.', 'Madison', 'CS');
+INSERT INTO students VALUES  (5, 171860604, 'David', 'Schroeder', 'male', '1999-01-02', '345 Maple St.', 'CS');
 INSERT INTO students VALUES  (6, 171860605, 'Eduardo', 'Rodriquez', 'female', '1999-06-14', '2749 Blackhawk Trail', 'CS');
 INSERT INTO students VALUES  (7, 171860606, 'Carlos', 'Estaban', 'female', '1999-07-21', '2335 Independence La.', 'CS');

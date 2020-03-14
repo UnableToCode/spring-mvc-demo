@@ -15,16 +15,21 @@
  */
 package org.springframework.samples.petclinic.model;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Simple JavaBean domain object representing an person.
  *
  * @author Ken Krebs
  */
-@MappedSuperclass
+@Entity
+@Table(name = "students")
 public class Student extends BaseEntity {
 
 	/**
@@ -34,7 +39,7 @@ public class Student extends BaseEntity {
 
 	@Column(name = "student_id")
 	@NotEmpty
-	private int studentId;
+	private String studentId;
 
 	@Column(name = "first_name")
 	@NotEmpty
@@ -49,8 +54,8 @@ public class Student extends BaseEntity {
 	private String sex;
 
 	@Column(name = "birth_date")
-	@NotEmpty
-	private String birthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDate;
 
 	@Column(name = "address")
 	@NotEmpty
@@ -60,11 +65,11 @@ public class Student extends BaseEntity {
 	@NotEmpty
 	private String department;
 
-	public int getStudentId() {
+	public String getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(int studentId) {
+	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
 
@@ -92,11 +97,11 @@ public class Student extends BaseEntity {
 		this.sex = sex;
 	}
 
-	public String getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

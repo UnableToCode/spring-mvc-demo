@@ -65,7 +65,7 @@ class StudentControllerTests {
 	void setup() {
 		george = new Student();
 		george.setId(TEST_OWNER_ID);
-		george.setStudentId(171620254);
+		george.setStudentId("171620254");
 		george.setFirstName("George");
 		george.setLastName("Franklin");
 		george.setSex("male");
