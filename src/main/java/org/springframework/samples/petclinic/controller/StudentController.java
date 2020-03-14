@@ -106,7 +106,7 @@ class StudentController {
 	}
 
 	@GetMapping("/students/{studentId}/edit")
-	public String initUpdateStudentForm(@PathVariable("studentId") int studentId, Model model) {
+	public String initUpdateStudentForm(@PathVariable("studentId") Integer studentId, Model model) {
 		Student student = this.students.findById(studentId);
 		model.addAttribute(student);
 		return VIEWS_STUDENT_CREATE_OR_UPDATE_FORM;
@@ -127,13 +127,13 @@ class StudentController {
 
 	/**
 	 * Custom handler for displaying an student.
-	 * @param studentId the ID of the student to display
+	 * @param id the ID of the student to display
 	 * @return a ModelMap with the model attributes for the view
 	 */
 	@GetMapping("/students/{studentId}")
-	public ModelAndView showStudent(@PathVariable("studentId") int studentId) {
+	public ModelAndView showStudent(@PathVariable("studentId") Integer id) {
 		ModelAndView mav = new ModelAndView("students/studentDetails");
-		Student student = this.students.findById(studentId);
+		Student student = this.students.findById(id);
 		mav.addObject(student);
 		return mav;
 	}

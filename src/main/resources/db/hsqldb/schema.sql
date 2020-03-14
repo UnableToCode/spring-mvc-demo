@@ -10,12 +10,12 @@ DROP TABLE students IF EXISTS;
 CREATE TABLE students (
   id         INTEGER IDENTITY PRIMARY KEY,
   student_id VARCHAR(10) NOT NULL UNIQUE,
-  first_name VARCHAR(30) NOT NULL,
-  last_name  VARCHAR(30) NOT NULL,
-  sex        VARCHAR(10) NOT NULL,
-  birth_date DATE NOT NULL,
-  address    VARCHAR(255) NOT NULL,
-  department VARCHAR(30) NOT NULL,
+  first_name VARCHAR(30),
+  last_name  VARCHAR(30),
+  sex        VARCHAR(10),
+  birth_date DATE,
+  address    VARCHAR(255),
+  department VARCHAR(30),
 );
 -- CREATE INDEX vets_last_name ON vets (last_name);
 --
