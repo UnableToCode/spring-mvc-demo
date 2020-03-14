@@ -16,6 +16,10 @@
 
 package org.springframework.samples.petclinic.controller;
 
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -23,58 +27,50 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+
+import org.assertj.core.util.Lists;
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.repository.PetRepository;
-import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.model.Student;
+import org.springframework.samples.petclinic.repository.StudentRepository;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
- * Test class for {@link VisitController}
+ * Test class for {@link StudentController}
  *
  * @author Colin But
  */
-@WebMvcTest(VisitController.class)
-class VisitControllerTests {
+@WebMvcTest(StudentController.class)
+class StudentControllerTests {
 
-	private static final int TEST_PET_ID = 1;
+	private static final int TEST_OWNER_ID = 1;
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@MockBean
-	private VisitRepository visits;
+	private StudentRepository owners;
 
-	@MockBean
-	private PetRepository pets;
+	private Student george;
 
 	@BeforeEach
-	void init() {
-		given(this.pets.findById(TEST_PET_ID)).willReturn(new Pet());
-	}
-
-	@Test
-	void testInitNewVisitForm() throws Exception {
-		mockMvc.perform(get("/owners/*/pets/{petId}/visits/new", TEST_PET_ID)).andExpect(status().isOk())
-				.andExpect(view().name("pets/createOrUpdateVisitForm"));
-	}
-
-	@Test
-	void testProcessNewVisitFormSuccess() throws Exception {
-		mockMvc.perform(post("/owners/*/pets/{petId}/visits/new", TEST_PET_ID).param("name", "George")
-				.param("description", "Visit Description")).andExpect(status().is3xxRedirection())
-				.andExpect(view().name("redirect:/owners/{ownerId}"));
-	}
-
-	@Test
-	void testProcessNewVisitFormHasErrors() throws Exception {
-		mockMvc.perform(post("/owners/*/pets/{petId}/visits/new", TEST_PET_ID).param("name", "George"))
-				.andExpect(model().attributeHasErrors("visit")).andExpect(status().isOk())
-				.andExpect(view().name("pets/createOrUpdateVisitForm"));
+	void setup() {
+		george = new Student();
+		george.setId(TEST_OWNER_ID);
+		george.setStudentId(171620254);
+		george.setFirstName("George");
+		george.setLastName("Franklin");
+		george.setSex("male");
+		george.setAddress("110 W. Liberty St.");
+		george.setDepartment("CS");
 	}
 
 }
